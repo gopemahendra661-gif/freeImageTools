@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>इमेज एडिटर टूल</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 इमेज एडिटर टूल्स</h1>
+            <p>अपनी तस्वीरों को रीसाइज़, कन्वर्ट और बैकग्राउंड रिमूव करें</p>
+        </header>
+
+        <!-- टूल सेलेक्शन -->
+        <div class="tool-selection">
+            <button class="tool-btn active" data-tool="resizer">इमेज रीसाइज़र</button>
+            <button class="tool-btn" data-tool="converter">फॉर्मेट कन्वर्टर</button>
+            <button class="tool-btn" data-tool="bgremover">बैकग्राउंड रिमूवर</button>
+        </div>
+
+        <!-- फ़ाइल अपलोड एरिया -->
+        <div class="upload-area" id="uploadArea">
+            <input type="file" id="fileInput" accept="image/*" hidden>
+            <div class="upload-box" id="uploadBox">
+                <span>📁</span>
+                <p>यहाँ क्लिक करके इमेज अपलोड करें या ड्रैग & ड्रॉप करें</p>
+                <small>समर्थित फॉर्मेट: JPEG, PNG, WEBP</small>
+            </div>
+        </div>
+
+        <!-- टूल सेक्शन -->
+        <div class="tools-container">
+            
+            <!-- रीसाइज़र टूल -->
+            <div class="tool-section active" id="resizerSection">
+                <h3>इमेज रीसाइज़र</h3>
+                <div class="controls">
+                    <div class="control-group">
+                        <label>चौड़ाई (px):</label>
+                        <input type="number" id="widthInput" min="1" value="800">
+                    </div>
+                    <div class="control-group">
+                        <label>ऊँचाई (px):</label>
+                        <input type="number" id="heightInput" min="1" value="600">
+                    </div>
+                    <div class="control-group">
+                        <label>एस्पेक्ट रेशियो लॉक:</label>
+                        <input type="checkbox" id="aspectRatio" checked>
+                    </div>
+                </div>
+                <button id="resizeBtn">रिसाइज़ करें</button>
+            </div>
+
+            <!-- कन्वर्टर टूल -->
+            <div class="tool-section" id="converterSection">
+                <h3>फॉर्मेट कन्वर्टर</h3>
+                <div class="controls">
+                    <label>आउटपुट फॉर्मेट चुनें:</label>
+                    <select id="formatSelect">
+                        <option value="png">PNG</option>
+                        <option value="jpeg">JPEG</option>
+                        <option value="webp">WEBP</option>
+                    </select>
+                </div>
+                <button id="convertBtn">कन्वर्ट करें</button>
+            </div>
+
+            <!-- बैकग्राउंड रिमूवर टूल -->
+            <div class="tool-section" id="bgremoverSection">
+                <h3>बैकग्राउंड रिमूवर</h3>
+                <div class="controls">
+                    <p>यह टूल इमेज का बैकग्राउंड ट्रांसपेरेंट करेगा</p>
+                    <small>नोट: यह एक बेसिक इम्प्लीमेंटेशन है</small>
+                </div>
+                <button id="removeBgBtn">बैकग्राउंड रिमूव करें</button>
+            </div>
+
+        </div>
+
+        <!-- रिजल्ट प्रिव्यू -->
+        <div class="result-area" id="resultArea" style="display: none;">
+            <h3>परिणाम</h3>
+            <div class="image-comparison">
+                <div class="original-image">
+                    <h4>ओरिजिनल इमेज</h4>
+                    <canvas id="originalCanvas"></canvas>
+                </div>
+                <div class="processed-image">
+                    <h4>प्रोसेस्ड इमेज</h4>
+                    <canvas id="processedCanvas"></canvas>
+                </div>
+            </div>
+            <button id="downloadBtn">डाउनलोड करें</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
